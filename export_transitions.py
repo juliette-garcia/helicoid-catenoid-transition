@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 u = np.linspace(-2, 2, 100)
 v = np.linspace(-np.pi, np.pi, 100)
 u, v = np.meshgrid(u, v)
-A = np.linspace(0, 1/2, 12)
+A = np.linspace(0, 11/12, 12)
 
 # Define the catenoid-helicoid transition function
 def catenoid_helicoid(u, v, A) :
