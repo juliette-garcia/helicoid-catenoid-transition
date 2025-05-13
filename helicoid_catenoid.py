@@ -1,24 +1,22 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from matplotlib.widgets import Slider, Button
 import plotly.graph_objects as go
 
 # Parameters
-b = 1.0
-u = np.linspace(-np.pi, np.pi, 100)
-v = np.linspace(-2, 2, 100)
+v = np.linspace(-np.pi, np.pi, 100)
+u = np.linspace(-2, 2, 100)
 u, v = np.meshgrid(u, v)
 
-# Transition parameter
-t_values = np.linspace(0, 1, 100)
+A = np.linspace(-1/2, 5/12, 12)
 
-# Function to compute helicoid and catenoid
-def helicoid_catenoid(u, v, t):
-    x = (-b * np.sinh(v * t) * np.sin(u) * (1 - t)) + (-b * np.cosh(v * t) * np.cos(u) * t)
-    y = (b * np.sinh(v * t) * np.cos(u) * (1 - t)) + (-b * np.cosh(v * t) * np.sin(u) * t)
-    z = (b * u * (1 - t)) + (b * v * t)
-    return x, y, z
+# Define the catenoid-helicoid transition function
+def helicoid_catenoid(u, v, A) :
+    l = A*np.pi  #  0 ≤ A ≤ 1/2
+    cosT, sinT = np.cos(l), np.sin(l)   
+    x =  cosT * np.sinh(u) * np.sin(v) -  sinT * np.cosh(u) * np.cos(v)
+    y =  cosT * np.sinh(u) * np.cos(v) +  sinT * np.cosh(u) * np.sin(v)
+    z = v *cosT -  u * sinT
+    return x,y,z
 
 # Initialize plot
 fig = plt.figure()
