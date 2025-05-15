@@ -13,50 +13,34 @@ This work is based on the parametrization described in the paper:
 
 ## Mathematical Background
 
-Each shape is given by two parameters, u and v.
+Each shape is given by two parameters, u and v. Below are their parameterizations:
 
-### Catenoid parameterization
+    # Catenoid parameterization
     x = cosh(u) * cos(v)
     y = cosh(u) * sin(v)
     z = u
-### Helicoid parameterization
-    x = u * cos(v)
-    y = u * sin(v)
+    
+    # Helicoid parameterization
+    x = sinh(u) * sin(v)
+    y = sinh(u) * cos(v)
     z = v
 
-### Catenoid-Helicoid Transition parameterization
+To transition between these two surfaces, we take a "weighted average" of the surfaces. That is, we weight the catenoid (cosh terms) and the helicoid (sinh terms) by cos θ and sin θ, respectively.
 
+    # Catenoid-Helicoid Transition parameterization
     θ = A × π
     x =  cos(θ)·sinh(u)·sin(v)  –  sin(θ)·cosh(u)·cos(v)
     y =  cos(θ)·sinh(u)·cos(v)  +  sin(θ)·cosh(u)·sin(v)
     z =  v·cos(θ)  –  u·sin(θ)
 
-θ slides us from catenoid (θ=0) to helicoid (θ=π/2). By increasing A, θ goes from 0 to π/2, so the surface naturally “twists” into a helicoid.
+Note that θ slides us from catenoid (θ=0) to helicoid (θ=π/2). By increasing A, θ goes from 0 to π/2, so the surface shifts from purely catenoid to purely helicoid.
 
 
----
-
-## Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/yourusername/catenoid-helicoid-transition.git
-   cd catenoid-helicoid-transition
-   ```
-
-2. Create a virtual environment and install dependencies:
-
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   ```
 ---
 
 ## Usage
 
-### 1. Animate the Transition
+### 1. Seeing an Animation of the Transition
 
 Run:
 
@@ -64,10 +48,7 @@ Run:
 python animate_surface.py
 ```
 
-* **Matplotlib version**: Quick static preview and slider-based control.
-* **Plotly version**: Interactive 3D animation with Play/Pause buttons and sliders; ideal for web embedding.
-
-### 2. Generate STL Models
+### 2. Generating STL Models
 
 Run:
 
@@ -75,7 +56,7 @@ Run:
 python generate_stl.py
 ```
 
-* Produces 12 (this nunmber can be changed) STL files in the `Models/` directory. Each STL file represents a phase of the transition with a set thickness (this number can also be changed). Note that the phases that are exporte are equally spaced.
+* Produces 12 (this number can be changed) STL files in the `Models/` directory. Each STL file represents a phase of the transition with a set thickness (this number can also be changed). Note that the phases that are exporte are equally spaced.
 
 ---
 
