@@ -56,7 +56,7 @@ Run:
 python generate_stl.py
 ```
 
-* Produces 12 (this number can be changed) STL files in the `Models/` directory. Each STL file represents a phase of the transition with a set thickness (this number can also be changed). Note that the phases that are exporte are equally spaced.
+This produces 12 (this number can be changed) STL files in the `Models/` directory. Each file captures an equally spaced phase of the transition at an adjustable thickness. Our current settings were used to create a zoetrope!
 
 ---
 
